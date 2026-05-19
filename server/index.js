@@ -4,6 +4,7 @@ import morgan from 'morgan'
 import 'dotenv/config'
 import db from './src/config/db.js'
 import productRoutes from './src/routes/product.routes.js'
+import { swaggerDocs } from './src/swagger/swagger.js'
 
 const app = express()
 
@@ -12,6 +13,7 @@ app.use(morgan('dev'))
 app.use(express.json())
 
 app.use('/api/products', productRoutes)
+swaggerDocs(app)
 
 const PORT = process.env.PORT || 4000
 
